@@ -49,5 +49,8 @@ before_script:
             --skip_cleanup=true;
       fi
     - unset AWS_SECRET_ACCESS_KEY
+    # Fix D-BUS warnings in output
+    - apt-get install dbus-x11
+    - service dbus start
 script:
     - test/runtests.sh -x firefox/firefox -f
